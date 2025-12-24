@@ -1,0 +1,19 @@
+{
+  "name": "sijadin",
+  "version": "1.0.0",
+  "description": "Sijadin - Sistem Laporan Perjalanan Dinas",
+  "scripts": {
+    "backend": ".\\scripts\\dev-backend.bat",
+    "backend:setup": ".\\scripts\\setup-backend.bat",
+    "migrate": ".\\scripts\\migrate.bat",
+    "frontend": "cd apps/web && npm run dev",
+    "frontend:install": "cd apps/web && npm install",
+    "dev": "echo Run 'npm run backend' in one terminal and 'npm run frontend' in another",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:full": "docker-compose --profile full up -d"
+  },
+  "keywords": ["sijadin", "laporan", "perjalanan-dinas"],
+  "author": "",
+  "license": "MIT"
+}
