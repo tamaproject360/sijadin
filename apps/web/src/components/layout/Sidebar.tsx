@@ -11,6 +11,7 @@ import {
 } from 'phosphor-react'
 import { useState } from 'react'
 import clsx from 'clsx'
+import { useAuth } from '../../hooks/useAuth'
 
 const menuItems = [
   { icon: House, label: 'Dashboard', path: '/' },
@@ -22,6 +23,7 @@ const menuItems = [
 
 export default function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const { logout } = useAuth()
 
   return (
     <motion.aside
@@ -104,6 +106,7 @@ export default function Sidebar() {
         {/* User Section */}
         <div className="border-t border-sapphire-100 pt-6 space-y-2">
           <button
+            onClick={logout}
             className={clsx(
               'flex items-center gap-3 px-4 py-3 rounded-xl w-full',
               'text-sapphire-600 hover:text-sapphire-900',

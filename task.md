@@ -43,13 +43,13 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 2.1 | Implementasi password hashing (bcrypt/argon2) | ⬜ | Critical | 2 |
-| 2.2 | Implementasi JWT token generation & validation | ⬜ | Critical | 2 |
-| 2.3 | Buat endpoint `POST /auth/register` | ⬜ | High | 2 |
-| 2.4 | Buat endpoint `POST /auth/login` | ⬜ | Critical | 2 |
-| 2.5 | Buat endpoint `GET /auth/me` | ⬜ | Critical | 2 |
-| 2.6 | Buat auth middleware/dependency untuk protected routes | ⬜ | Critical | 2 |
-| 2.7 | Buat role-based access control (RBAC) dasar | ⬜ | Medium | 2 |
+| 2.1 | Implementasi password hashing (bcrypt/argon2) | ✅ | Critical | 2 |
+| 2.2 | Implementasi JWT token generation & validation | ✅ | Critical | 2 |
+| 2.3 | Buat endpoint `POST /auth/register` | ✅ | High | 2 |
+| 2.4 | Buat endpoint `POST /auth/login` | ✅ | Critical | 2 |
+| 2.5 | Buat endpoint `GET /auth/me` | ✅ | Critical | 2 |
+| 2.6 | Buat auth middleware/dependency untuk protected routes | ✅ | Critical | 2 |
+| 2.7 | Buat role-based access control (RBAC) dasar | ✅ | Medium | 2 |
 
 ---
 
@@ -57,17 +57,17 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 3.1 | Buat Pydantic schemas untuk Report | ⬜ | Critical | 3 |
-| 3.2 | Buat endpoint `POST /reports` (create report) | ⬜ | Critical | 3 |
-| 3.3 | Buat endpoint `GET /reports` (list reports) | ⬜ | Critical | 3 |
-| 3.4 | Buat endpoint `GET /reports/{id}` (detail) | ⬜ | Critical | 3 |
-| 3.5 | Buat endpoint `PATCH /reports/{id}` (update meta) | ⬜ | High | 3 |
-| 3.6 | Buat Pydantic schemas untuk ReportFile | ⬜ | Critical | 3 |
-| 3.7 | Buat endpoint `POST /reports/{id}/files` (upload multipart) | ⬜ | Critical | 3 |
-| 3.8 | Implementasi upload file ke MinIO | ⬜ | Critical | 3 |
-| 3.9 | Buat endpoint `GET /reports/{id}/files` (list files) | ⬜ | High | 3 |
-| 3.10 | Buat endpoint `GET /files/{file_id}/download` | ⬜ | High | 3 |
-| 3.11 | Validasi file size & mime type | ⬜ | High | 3 |
+| 3.1 | Buat Pydantic schemas untuk Report | ✅ | Critical | 3 |
+| 3.2 | Buat endpoint `POST /reports` (create report) | ✅ | Critical | 3 |
+| 3.3 | Buat endpoint `GET /reports` (list reports) | ✅ | Critical | 3 |
+| 3.4 | Buat endpoint `GET /reports/{id}` (detail) | ✅ | Critical | 3 |
+| 3.5 | Buat endpoint `PATCH /reports/{id}` (update meta) | ✅ | High | 3 |
+| 3.6 | Buat Pydantic schemas untuk ReportFile | ✅ | Critical | 3 |
+| 3.7 | Buat endpoint `POST /reports/{id}/files` (upload multipart) | ✅ | Critical | 3 |
+| 3.8 | Implementasi upload file ke MinIO | ✅ | Critical | 3 |
+| 3.9 | Buat endpoint `GET /reports/{id}/files` (list files) | ✅ | High | 3 |
+| 3.10 | Buat endpoint `GET /files/{file_id}/download` | ✅ | High | 3 |
+| 3.11 | Validasi file size & mime type | ✅ | High | 3 |
 
 ---
 
@@ -75,12 +75,12 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 4.1 | Setup RQ worker (`apps/worker/`) | ⬜ | Critical | 4 |
-| 4.2 | Buat base job class dengan error handling | ⬜ | Critical | 4 |
-| 4.3 | Buat endpoint `POST /reports/{id}/process` (trigger job) | ⬜ | Critical | 4 |
-| 4.4 | Buat endpoint `GET /jobs/{job_id}` (status + progress) | ⬜ | Critical | 4 |
-| 4.5 | Implementasi job progress tracking | ⬜ | High | 4 |
-| 4.6 | Implementasi job error logging ke `job_runs` | ⬜ | High | 4 |
+| 4.1 | Setup RQ worker (`apps/worker/`) | ✅ | Critical | 4 |
+| 4.2 | Buat base job class dengan error handling | ✅ | Critical | 4 |
+| 4.3 | Buat endpoint `POST /reports/{id}/process` (trigger job) | ✅ | Critical | 4 |
+| 4.4 | Buat endpoint `GET /jobs/{job_id}` (status + progress) | ✅ | Critical | 4 |
+| 4.5 | Implementasi job progress tracking | ✅ | High | 4 |
+| 4.6 | Implementasi job error logging ke `job_runs` | ✅ | High | 4 |
 
 ---
 
@@ -88,11 +88,11 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 5.1 | Setup PyMuPDF untuk ekstraksi teks PDF | ⬜ | Critical | 5 |
-| 5.2 | Setup python-docx untuk ekstraksi teks DOCX | ⬜ | Critical | 5 |
-| 5.3 | Buat file classifier (heuristik: nama file + mime + keyword) | ⬜ | High | 5 |
-| 5.4 | Implementasi job step `classify_files` | ⬜ | High | 5 |
-| 5.5 | Implementasi job step `extract_text` | ⬜ | Critical | 5 |
+| 5.1 | Setup PyMuPDF untuk ekstraksi teks PDF | ✅ | Critical | 5 |
+| 5.2 | Setup python-docx untuk ekstraksi teks DOCX | ✅ | Critical | 5 |
+| 5.3 | Buat file classifier (heuristik: nama file + mime + keyword) | ✅ | High | 5 |
+| 5.4 | Implementasi job step `classify_files` | ✅ | High | 5 |
+| 5.5 | Implementasi job step `extract_text` | ✅ | Critical | 5 |
 | 5.6 | (Opsional) Setup Tesseract OCR fallback | ⬜ | Low | 5 |
 
 ---
@@ -196,10 +196,10 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 13.1 | Buat halaman Login | ⬜ | Critical | 13 |
-| 13.2 | Integrasi login dengan API | ⬜ | Critical | 13 |
+| 13.1 | Buat halaman Login | ✅ | Critical | 13 |
+| 13.2 | Integrasi login dengan API | ✅ | Critical | 13 |
 | 13.3 | (Opsional) Buat halaman Register | ⬜ | Low | 13 |
-| 13.4 | Implementasi logout | ⬜ | High | 13 |
+| 13.4 | Implementasi logout | ✅ | High | 13 |
 
 ---
 
@@ -207,10 +207,10 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 14.1 | Buat halaman Report List | ⬜ | Critical | 14 |
-| 14.2 | Buat komponen Report Card | ⬜ | High | 14 |
-| 14.3 | Buat modal/form Create Report | ⬜ | Critical | 14 |
-| 14.4 | Integrasi list & create dengan API | ⬜ | Critical | 14 |
+| 14.1 | Buat halaman Report List | ✅ | Critical | 14 |
+| 14.2 | Buat komponen Report Card | ✅ | High | 14 |
+| 14.3 | Buat modal/form Create Report | ✅ | Critical | 14 |
+| 14.4 | Integrasi list & create dengan API | ✅ | Critical | 14 |
 | 14.5 | Implementasi pagination/infinite scroll | ⬜ | Medium | 14 |
 
 ---
@@ -219,14 +219,14 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 15.1 | Buat halaman Report Detail | ⬜ | Critical | 15 |
-| 15.2 | Buat komponen metadata display/edit | ⬜ | High | 15 |
-| 15.3 | Buat komponen file upload (drag & drop) | ⬜ | Critical | 15 |
-| 15.4 | Buat komponen file list dengan preview | ⬜ | High | 15 |
-| 15.5 | Integrasi upload dengan API | ⬜ | Critical | 15 |
-| 15.6 | Buat tombol "Process" + trigger job | ⬜ | Critical | 15 |
-| 15.7 | Buat komponen job status + progress bar | ⬜ | Critical | 15 |
-| 15.8 | Implementasi polling job status | ⬜ | Critical | 15 |
+| 15.1 | Buat halaman Report Detail | ✅ | Critical | 15 |
+| 15.2 | Buat komponen metadata display/edit | ✅ | High | 15 |
+| 15.3 | Buat komponen file upload (drag & drop) | ✅ | Critical | 15 |
+| 15.4 | Buat komponen file list dengan preview | ✅ | High | 15 |
+| 15.5 | Integrasi upload dengan API | ✅ | Critical | 15 |
+| 15.6 | Buat tombol "Process" + trigger job | ✅ | Critical | 15 |
+| 15.7 | Buat komponen job status + progress bar | ✅ | Critical | 15 |
+| 15.8 | Implementasi polling job status | ✅ | Critical | 15 |
 
 ---
 

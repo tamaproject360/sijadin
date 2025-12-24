@@ -19,8 +19,8 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Set sqlalchemy.url from settings
-config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+# Set sqlalchemy.url from settings (use sync URL for migrations)
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL_SYNC)
 
 # add your model's MetaData object here
 target_metadata = Base.metadata

@@ -1,3 +1,4 @@
+# Minimal requirements for MVP (login & basic API)
 fastapi==0.109.0
 uvicorn[standard]==0.27.0
 pydantic>=2.0.0
@@ -5,20 +6,12 @@ pydantic-settings==2.1.0
 sqlalchemy==2.0.25
 alembic==1.13.1
 asyncpg>=0.29.0
-psycopg2-binary>=2.9.0
 redis==5.0.1
 rq==1.16.1
 python-jose[cryptography]==3.3.0
 passlib[bcrypt]==1.7.4
 python-multipart==0.0.6
 minio==7.2.3
-# PyMuPDF - Requires Visual Studio - install manually if needed
 python-docx==1.1.0
-docxtpl==0.16.7
-langchain>=0.1.0
-langchain-community>=0.0.16
-pgvector==0.2.4
-playwright>=1.40.0
-pillow>=10.0.0
 aiofiles==23.2.1
 httpx==0.26.0

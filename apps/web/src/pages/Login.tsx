@@ -1,25 +1,18 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { EnvelopeSimple, Lock, Sparkle } from 'phosphor-react'
+import { EnvelopeSimple, Lock, Sparkle, Warning } from 'phosphor-react'
 import Input from '../components/ui/Input'
 import Button from '../components/ui/Button'
+import { useAuth } from '../hooks/useAuth'
 
 export default function Login() {
-  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const { login, loginLoading, loginError } = useAuth()
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setLoading(false)
-      navigate('/')
-    }, 1500)
+    login({ email, password })
   }
 
   return (
@@ -94,6 +87,22 @@ export default function Login() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
         >
+          {loginError && (
+            <motion.div
+              className="p-4 rounded-xl bg-error/10 border border-error/20 flex items-start gap-3"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <Warning size={20} weight="fill" className="text-error flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <p className="text-sm font-medium text-error">Login Failed</p>
+                <p className="text-xs text-error/80 mt-1">
+                  {loginError instanceof Error ? loginError.message : 'Invalid email or password'}
+                </p>
+              </div>
+            </motion.div>
+          )}
+
           <Input
             type="email"
             label="Email"
@@ -132,7 +141,7 @@ export default function Login() {
             variant="teal"
             size="lg"
             fullWidth
-            loading={loading}
+            loading={loginLoading}
           >
             Sign In
           </Button>

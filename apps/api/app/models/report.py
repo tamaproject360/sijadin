@@ -18,13 +18,20 @@ class Report(Base):
     __tablename__ = "reports"
 
     id = Column(Integer, primary_key=True, index=True)
-    org_id = Column(Integer, ForeignKey("organizations.id"), nullable=False)
+    org_id = Column(Integer, ForeignKey("organizations.id"), nullable=True)
     template_id = Column(Integer, ForeignKey("doc_templates.id"), nullable=True)
     title = Column(String(500), nullable=False)
     status = Column(Enum(ReportStatus), default=ReportStatus.DRAFTING, nullable=False)
     created_by = Column(Integer, ForeignKey("users.id"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    
+    # Metadata fields
+    activity_name = Column(String(500), nullable=True)
+    location = Column(String(500), nullable=True)
+    date_start = Column(String(50), nullable=True)
+    date_end = Column(String(50), nullable=True)
+    unit = Column(String(500), nullable=True)
     
     # Relationships
     organization = relationship("Organization", back_populates="reports")
