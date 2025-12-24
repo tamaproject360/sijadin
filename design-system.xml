@@ -1,0 +1,121 @@
+You are building an Awwwards Site of the Year winner for 2030. This is a premium Enterprise SaaS application named "Sijadin". Every single detail matters. No shortcuts. No templates. No generic solutions.
+
+<company>
+Name: Sijadin (Sistem Informasi Perjalanan Dinas)
+Tagline: "Seamless Reporting. Beyond Paperwork."
+Focus: AI-Assisted Official Travel Reporting Platform & Document Automation
+Target Audience: Government Officials (ASN), Corporate Executives, Operational Managers.
+Vibe: The Seamless Flow. Frictionless, liquid, ethereal, yet surgically precise.
+</company>
+
+<design_philosophy>
+The interface must feel like "Oxygen". It removes the weight of bureaucracy. 
+Visual Metaphor: Liquid Flow & Clean Glass. 
+The transition from a raw receipt to a finalized report should feel like water flowing through a filter—effortless and clarifying.
+Avoid "Government App" aesthetics (clunky, gray, dense). 
+Embrace "Future Enterprise" aesthetics (Airy, Light, Intelligent).
+</design_philosophy>
+
+<color_system>
+Forget standard palettes. This is surgical and fresh.
+Backgrounds:
+- Snow White (Base): #FFFFFF
+- Vapor Blue (Surface/Cards): #F0F9FF (Very subtle cool tint)
+
+Accents:
+- Deep Sapphire (Primary/Actions): #0F172A (Commands authority, anchors the design)
+- Electric Teal (Highlights/AI Active State): #06B6D4 (Represents intelligence/freshness)
+- Success Green (Validation): #10B981
+- Error Red (Critical): #F43F5E
+
+Glassmorphism Strategy:
+- Sidebar & Floating Elements: background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4);
+- Shadows: Soft, diffused shadows (0px 10px 40px rgba(6, 182, 212, 0.05)) to create depth without dirtiness.
+</color_system>
+
+<typography>
+Font Family: 'Geist Sans' or 'Inter Tight'. 
+Style: Ultra-Modern & Futuristic.
+- Headlines: Light/ExtraLight weight (300). Letter-spacing: -0.02em. Large scale.
+- Body: Regular (400). High readability. Color: #334155 (Slate 700).
+- Data/Numbers: Monospace (Geist Mono/JetBrains Mono) for financial data.
+</typography>
+
+<iconography>
+IMPORTANT: DO NOT use Lucide React. It looks too generic.
+Library: Phosphor Icons (React).
+Weight: 'Light' or 'Thin' to match the typography.
+Style: Elegant, sharp lines. No fill unless active.
+</iconography>
+
+<cursor_design>
+The cursor remains standard (system default) to maintain usability for administrative tasks, BUT:
+- All interactive elements (buttons, cards) must have premium micro-interactions on hover.
+- Hover Effect: Elements gently lift (transform: translateY(-2px)) and glow subtly (box-shadow).
+- Buttons: On click, scale down (0.98) with spring physics.
+</cursor_design>
+
+<layout_structure>
+1. Dashboard (The Cockpit):
+   - Glassmorphism Sidebar (Collapsible).
+   - Main Content Area: Spacious, centered max-width for document editing (like Notion/Google Docs but prettier).
+   - Floating Action Button (FAB) for "New Report" with a liquid ripple effect.
+
+2. Document Editor (Tiptap):
+   - Minimalist toolbar that appears only when text is selected (Bubble Menu).
+   - "Focus Mode": Fades out UI elements when typing.
+   - AI Suggestions: Appear as floating cards in the margin with #06B6D4 border.
+</layout_structure>
+
+<motion_principles>
+Library: Framer Motion + Lenis (Smooth Scroll).
+Concept: "Liquid Fade".
+1. Page Load: Content staggers in from bottom (y: 20) with high damping (stiffness: 100, damping: 20).
+2. Modals/Panels: Do not "pop". They "unfold" or slide in with a blur reveal (filter: blur(10px) -> blur(0px)).
+3. Progress Indicators: NOT a solid bar. Use a flowing particle stream or a gradient line that pulses.
+4. Scroll: Lenis integration is MANDATORY. Scrolling must feel heavy and smooth, not jerky.
+</motion_principles>
+
+<core_features_ui>
+1. Autonomous Document Extraction (Upload):
+   - Dropzone is a large, breathing glass panel.
+   - When uploading, show a "Scanning" animation (a laser scan line moving over the file icon).
+   - Use Skeleton Screens with a shimmering teal gradient while AI is processing.
+
+2. Context-Aware Draft Engine:
+   - Split view or clean document view.
+   - AI changes are highlighted in a soft teal background (#CCFBF1).
+
+3. One-Click Compliance (Export):
+   - Preview modal shows the "Paper" view (white box with drop shadow).
+   - Export buttons (PDF/DOCX) trigger a "success" confetti or checkmark morph animation.
+</core_features_ui>
+
+<technical_architecture>
+Frontend:
+- React + Vite + TypeScript.
+- TailwindCSS for styling.
+- Framer Motion for animations.
+- TanStack Query for state management.
+- Tiptap (Headless wrapper) for the rich text editor.
+
+Backend (Contextual Awareness):
+- FastAPI (Python).
+- Local Storage: MinIO (S3 Compatible) for file handling.
+- Database: PostgreSQL + pgvector.
+- Job Queue: Redis + RQ/Celery (Async processing for OCR).
+
+Note: Ensure the UI handles "Async States" gracefully. If a job is queued, show a non-blocking toast or status indicator in the corner.
+</technical_architecture>
+
+<quality_checklist>
+□ Are the icons Phosphor (Light/Thin)? (No generic Lucide).
+□ Does the scroll feel smooth (Lenis)?
+□ Is the whitespace generous? (Avoid clutter).
+□ Do modals use backdrop-blur (Glassmorphism)?
+□ Is the primary blue (#0F172A) used for actions and teal (#06B6D4) for AI?
+□ Are shadows colored and diffused (not black)?
+□ Does the typography feel "Ultra-Thin" and futuristic?
+</quality_checklist>
+
+Build this. Make the bureaucracy feel beautiful.

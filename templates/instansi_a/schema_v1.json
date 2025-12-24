@@ -1,0 +1,117 @@
+{
+  "template_id": "tpl-instansi-a-v1",
+  "name": "Template Laporan Perjalanan Dinas - Instansi A",
+  "version": "1.0",
+  "sections": [
+    {
+      "key": "pendahuluan",
+      "title": "Pendahuluan",
+      "required": true,
+      "type": "text",
+      "description": "Latar belakang dan tujuan perjalanan dinas"
+    },
+    {
+      "key": "dasar_pelaksanaan",
+      "title": "Dasar Pelaksanaan",
+      "required": true,
+      "type": "text",
+      "description": "Dasar hukum dan dokumen pendukung"
+    },
+    {
+      "key": "pelaksanaan",
+      "title": "Pelaksanaan Kegiatan",
+      "required": true,
+      "type": "composite",
+      "subsections": [
+        {
+          "key": "waktu_tempat",
+          "title": "Waktu dan Tempat",
+          "type": "text"
+        },
+        {
+          "key": "peserta",
+          "title": "Peserta",
+          "type": "list"
+        },
+        {
+          "key": "agenda",
+          "title": "Agenda Kegiatan",
+          "type": "table",
+          "columns": ["waktu", "kegiatan", "keterangan"]
+        }
+      ]
+    },
+    {
+      "key": "hasil",
+      "title": "Hasil dan Pembahasan",
+      "required": true,
+      "type": "text",
+      "description": "Hasil yang dicapai dari kegiatan"
+    },
+    {
+      "key": "kesimpulan",
+      "title": "Kesimpulan dan Rekomendasi",
+      "required": true,
+      "type": "text",
+      "description": "Kesimpulan dan rekomendasi tindak lanjut"
+    },
+    {
+      "key": "lampiran",
+      "title": "Lampiran",
+      "required": false,
+      "type": "attachments",
+      "attachment_types": {
+        "photos": {
+          "title": "Dokumentasi Foto",
+          "max_count": 20
+        },
+        "tickets": {
+          "title": "Tiket Perjalanan",
+          "max_count": 10
+        },
+        "documents": {
+          "title": "Dokumen Pendukung",
+          "max_count": 10
+        }
+      }
+    }
+  ],
+  "metadata_fields": [
+    {
+      "key": "activity_name",
+      "label": "Nama Kegiatan",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "location",
+      "label": "Lokasi",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "date_start",
+      "label": "Tanggal Mulai",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "date_end",
+      "label": "Tanggal Selesai",
+      "type": "date",
+      "required": true
+    },
+    {
+      "key": "unit",
+      "label": "Unit/Bagian",
+      "type": "string",
+      "required": true
+    },
+    {
+      "key": "participants",
+      "label": "Peserta",
+      "type": "array",
+      "required": true
+    }
+  ]
+}

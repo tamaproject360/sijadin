@@ -9,13 +9,13 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 0.1 | Setup monorepo structure (`apps/`, `packages/`, `templates/`, `data/`) | ⬜ | Critical | 0 |
-| 0.2 | Buat `.env.example` dengan semua environment variables | ⬜ | Critical | 0 |
-| 0.3 | Setup `docker-compose.yml` (postgres, redis, minio) | ⬜ | Critical | 0 |
-| 0.4 | Konfigurasi PostgreSQL dengan ekstensi pgvector | ⬜ | Critical | 0 |
-| 0.5 | Setup MinIO lokal + buat bucket (uploads, exports, artifacts) | ⬜ | Critical | 0 |
-| 0.6 | Setup Redis untuk job queue | ⬜ | Critical | 0 |
-| 0.7 | Buat README.md dengan instruksi setup development | ⬜ | Medium | 0 |
+| 0.1 | Setup monorepo structure (`apps/`, `packages/`, `templates/`, `data/`) | ✅ | Critical | 0 |
+| 0.2 | Buat `.env.example` dengan semua environment variables | ✅ | Critical | 0 |
+| 0.3 | Setup `docker-compose.yml` (postgres, redis, minio) | ✅ | Critical | 0 |
+| 0.4 | Konfigurasi PostgreSQL dengan ekstensi pgvector | ✅ | Critical | 0 |
+| 0.5 | Setup MinIO lokal + buat bucket (uploads, exports, artifacts) | ✅ | Critical | 0 |
+| 0.6 | Setup Redis untuk job queue | ✅ | Critical | 0 |
+| 0.7 | Buat README.md dengan instruksi setup development | ✅ | Medium | 0 |
 
 ---
 
@@ -23,19 +23,19 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 1.1 | Init FastAPI project (`apps/api/`) | ⬜ | Critical | 1 |
-| 1.2 | Setup Pydantic settings & config management | ⬜ | Critical | 1 |
-| 1.3 | Setup database connection (SQLAlchemy/asyncpg) | ⬜ | Critical | 1 |
-| 1.4 | Buat database migrations setup (Alembic) | ⬜ | Critical | 1 |
-| 1.5 | Buat schema tabel `users` + migration | ⬜ | Critical | 1 |
-| 1.6 | Buat schema tabel `organizations` + migration | ⬜ | Critical | 1 |
-| 1.7 | Buat schema tabel `doc_templates` + migration | ⬜ | High | 1 |
-| 1.8 | Buat schema tabel `reports` + migration | ⬜ | Critical | 1 |
-| 1.9 | Buat schema tabel `report_files` + migration | ⬜ | Critical | 1 |
-| 1.10 | Buat schema tabel `report_draft_versions` + migration | ⬜ | High | 1 |
-| 1.11 | Buat schema tabel `job_runs` + migration | ⬜ | High | 1 |
-| 1.12 | Buat schema tabel `exports` + migration | ⬜ | High | 1 |
-| 1.13 | Setup MinIO client utility | ⬜ | High | 1 |
+| 1.1 | Init FastAPI project (`apps/api/`) | ✅ | Critical | 1 |
+| 1.2 | Setup Pydantic settings & config management | ✅ | Critical | 1 |
+| 1.3 | Setup database connection (SQLAlchemy/asyncpg) | ✅ | Critical | 1 |
+| 1.4 | Buat database migrations setup (Alembic) | ✅ | Critical | 1 |
+| 1.5 | Buat schema tabel `users` + migration | ✅ | Critical | 1 |
+| 1.6 | Buat schema tabel `organizations` + migration | ✅ | Critical | 1 |
+| 1.7 | Buat schema tabel `doc_templates` + migration | ✅ | High | 1 |
+| 1.8 | Buat schema tabel `reports` + migration | ✅ | Critical | 1 |
+| 1.9 | Buat schema tabel `report_files` + migration | ✅ | Critical | 1 |
+| 1.10 | Buat schema tabel `report_draft_versions` + migration | ✅ | High | 1 |
+| 1.11 | Buat schema tabel `job_runs` + migration | ✅ | High | 1 |
+| 1.12 | Buat schema tabel `exports` + migration | ✅ | High | 1 |
+| 1.13 | Setup MinIO client utility | ✅ | High | 1 |
 
 ---
 
@@ -181,14 +181,14 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 12.1 | Init Vite + React + TypeScript (`apps/web/`) | ⬜ | Critical | 12 |
-| 12.2 | Setup TailwindCSS | ⬜ | Critical | 12 |
-| 12.3 | Setup routing (React Router) | ⬜ | Critical | 12 |
-| 12.4 | Setup HTTP client (axios/fetch wrapper) | ⬜ | Critical | 12 |
-| 12.5 | Setup TanStack Query untuk state management | ⬜ | High | 12 |
-| 12.6 | Buat auth context & token storage | ⬜ | Critical | 12 |
-| 12.7 | Buat protected route wrapper | ⬜ | Critical | 12 |
-| 12.8 | Buat base UI components (Button, Input, Card, Modal) | ⬜ | High | 12 |
+| 12.1 | Init Vite + React + TypeScript (`apps/web/`) | ✅ | Critical | 12 |
+| 12.2 | Setup TailwindCSS | ✅ | Critical | 12 |
+| 12.3 | Setup routing (React Router) | ✅ | Critical | 12 |
+| 12.4 | Setup HTTP client (axios/fetch wrapper) | ✅ | Critical | 12 |
+| 12.5 | Setup TanStack Query untuk state management | ✅ | High | 12 |
+| 12.6 | Buat auth context & token storage | ✅ | Critical | 12 |
+| 12.7 | Buat protected route wrapper | ✅ | Critical | 12 |
+| 12.8 | Buat base UI components (Button, Input, Card, Modal) | ✅ | High | 12 |
 
 ---
 

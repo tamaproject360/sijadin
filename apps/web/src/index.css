@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-sapphire-200;
+  }
+  
+  body {
+    @apply bg-snow text-sapphire-700 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-light tracking-tighter text-sapphire-900;
+  }
+}
+
+@layer components {
+  /* Glass Morphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-glass border border-white/40 shadow-glass;
+  }
+  
+  .glass-hover {
+    @apply hover:shadow-glass-hover transition-shadow duration-300;
+  }
+  
+  /* Liquid Button */
+  .btn-liquid {
+    @apply relative overflow-hidden px-6 py-3 rounded-xl font-medium;
+    @apply transition-all duration-300 ease-out;
+    @apply hover:-translate-y-0.5 hover:shadow-lift-hover;
+    @apply active:scale-[0.98];
+  }
+  
+  .btn-primary {
+    @apply btn-liquid bg-sapphire text-white;
+  }
+  
+  .btn-secondary {
+    @apply btn-liquid bg-vapor text-sapphire border border-sapphire-200;
+  }
+  
+  .btn-teal {
+    @apply btn-liquid bg-teal text-white;
+  }
+  
+  /* Input Fields */
+  .input-liquid {
+    @apply w-full px-4 py-3 rounded-xl border border-sapphire-200;
+    @apply bg-vapor/50 backdrop-blur-sm;
+    @apply focus:outline-none focus:ring-2 focus:ring-teal/30 focus:border-teal;
+    @apply transition-all duration-300;
+    @apply placeholder:text-sapphire-400;
+  }
+  
+  /* Card */
+  .card-glass {
+    @apply glass rounded-2xl p-6;
+    @apply hover:-translate-y-1 transition-transform duration-300;
+  }
+  
+  /* Shimmer Effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(6, 182, 212, 0.1),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Skeleton */
+  .skeleton {
+    @apply bg-gradient-to-r from-sapphire-100 via-teal-50 to-sapphire-100;
+    @apply bg-[length:200%_100%] animate-shimmer rounded-lg;
+  }
+  
+  /* Focus Mode */
+  .focus-mode {
+    @apply opacity-30 pointer-events-none transition-opacity duration-500;
+  }
+  
+  .focus-mode:hover {
+    @apply opacity-100 pointer-events-auto;
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient-teal {
+    @apply bg-gradient-to-r from-teal-600 to-teal-400 bg-clip-text text-transparent;
+  }
+  
+  .text-gradient-sapphire {
+    @apply bg-gradient-to-r from-sapphire-900 to-sapphire-600 bg-clip-text text-transparent;
+  }
+  
+  /* Glow Effects */
+  .glow-teal {
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+  
+  .glow-sapphire {
+    box-shadow: 0 0 20px rgba(15, 23, 42, 0.2);
+  }
+}
+
+/* Smooth Scroll (Lenis will enhance this) */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
