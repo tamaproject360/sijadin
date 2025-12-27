@@ -4,14 +4,10 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   ArrowLeft,
   CalendarBlank,
-  MapPin,
-  Users,
   Upload,
   Play,
   FileText,
-  Image as ImageIcon,
   FilePdf,
-  FileDoc,
 } from 'phosphor-react'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
@@ -37,14 +33,16 @@ export default function ReportDetail() {
   })
 
   // Fetch files
-  const { data: files, isLoading: filesLoading } = useQuery({
+  const { data: filesData, isLoading: filesLoading } = useQuery({
     queryKey: ['reports', id, 'files'],
     queryFn: async () => {
-      const response = await api.get<ReportFile[]>(`/reports/${id}/files`)
+      const response = await api.get<{ files: ReportFile[], total: number }>(`/reports/${id}/files`)
       return response.data
     },
     enabled: !!id,
   })
+
+  const files = filesData?.files || []
 
   // Fetch job status
   const { data: job } = useQuery({
@@ -94,7 +92,7 @@ export default function ReportDetail() {
     )
   }
 
-  const canProcess = files && files.length > 0 && report.status === 'drafting'
+  const canProcess = files.length > 0 && report.status === 'drafting'
 
   return (
     <div className="max-w-7xl mx-auto space-y-6">
@@ -182,7 +180,7 @@ export default function ReportDetail() {
                   Uploaded Files
                 </h2>
                 <span className="text-sm text-sapphire-500">
-                  {files?.length || 0} files
+                  {files.length} files
                 </span>
               </div>
 
@@ -192,7 +190,7 @@ export default function ReportDetail() {
                     <div key={i} className="skeleton h-16 rounded-xl" />
                   ))}
                 </div>
-              ) : files && files.length > 0 ? (
+              ) : files.length > 0 ? (
                 <FileList files={files} reportId={report.id} />
               ) : (
                 <div className="text-center py-12">
@@ -257,6 +255,7 @@ export default function ReportDetail() {
                   fullWidth
                   icon={<FileText size={20} weight="light" />}
                   disabled={report.status !== 'ready_to_review'}
+                  onClick={() => navigate(`/reports/${id}/draft`)}
                 >
                   Edit Draft
                 </Button>
@@ -264,17 +263,10 @@ export default function ReportDetail() {
                   variant="secondary"
                   fullWidth
                   icon={<FilePdf size={20} weight="light" />}
-                  disabled={report.status !== 'finalized'}
+                  disabled={report.status !== 'ready_to_review' && report.status !== 'finalized'}
+                  onClick={() => navigate(`/reports/${id}/export`)}
                 >
-                  Export PDF
-                </Button>
-                <Button
-                  variant="secondary"
-                  fullWidth
-                  icon={<FileDoc size={20} weight="light" />}
-                  disabled={report.status !== 'finalized'}
-                >
-                  Export DOCX
+                  Export Options
                 </Button>
               </div>
             </Card>

@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import clsx from 'clsx'
 
 interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'children'> {
-  children: ReactNode
+  children?: ReactNode
   variant?: 'primary' | 'secondary' | 'teal' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   icon?: ReactNode
@@ -73,7 +73,7 @@ export default function Button({
       ) : (
         <>
           {icon && iconPosition === 'left' && <span>{icon}</span>}
-          <span className="relative z-10">{children}</span>
+          {children && <span className="relative z-10">{children}</span>}
           {icon && iconPosition === 'right' && <span>{icon}</span>}
         </>
       )}

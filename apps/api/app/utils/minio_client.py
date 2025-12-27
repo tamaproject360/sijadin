@@ -6,13 +6,18 @@ import io
 
 class MinIOClient:
     def __init__(self):
-        self.client = Minio(
-            settings.MINIO_ENDPOINT,
-            access_key=settings.MINIO_ACCESS_KEY,
-            secret_key=settings.MINIO_SECRET_KEY,
-            secure=settings.MINIO_SECURE,
-        )
-        self._ensure_buckets()
+        try:
+            self.client = Minio(
+                settings.MINIO_ENDPOINT,
+                access_key=settings.MINIO_ACCESS_KEY,
+                secret_key=settings.MINIO_SECRET_KEY,
+                secure=settings.MINIO_SECURE,
+            )
+            self._ensure_buckets()
+            print(f"✓ MinIO client initialized: {settings.MINIO_ENDPOINT}")
+        except Exception as e:
+            print(f"✗ MinIO client initialization failed: {e}")
+            raise
 
     def _ensure_buckets(self):
         """Ensure all required buckets exist"""
@@ -31,6 +36,7 @@ class MinIOClient:
     def upload_file(self, bucket: str, object_name: str, file_data: bytes, content_type: str):
         """Upload file to MinIO"""
         try:
+            print(f"Uploading to MinIO: bucket={bucket}, object={object_name}, size={len(file_data)}, type={content_type}")
             self.client.put_object(
                 bucket,
                 object_name,
@@ -38,9 +44,13 @@ class MinIOClient:
                 length=len(file_data),
                 content_type=content_type,
             )
+            print(f"✓ Upload successful: {object_name}")
             return True
         except S3Error as e:
-            print(f"Error uploading file: {e}")
+            print(f"✗ S3Error uploading file: {e}")
+            return False
+        except Exception as e:
+            print(f"✗ Error uploading file: {e}")
             return False
 
     def download_file(self, bucket: str, object_name: str):

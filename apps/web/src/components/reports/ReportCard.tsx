@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { CalendarBlank, MapPin, User, ArrowRight } from 'phosphor-react'
+import { CalendarBlank, User, ArrowRight } from 'phosphor-react'
 import { Report } from '../../types'
 import { formatDate } from '../../lib/utils'
 import clsx from 'clsx'

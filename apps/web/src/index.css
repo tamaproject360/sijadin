@@ -135,3 +135,78 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* Tiptap Editor Styles */
+.ProseMirror {
+  @apply focus:outline-none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  @apply text-sapphire-400 float-left h-0 pointer-events-none;
+}
+
+.prose-sapphire {
+  @apply text-sapphire-900;
+}
+
+.prose-sapphire h1 {
+  @apply text-3xl font-light tracking-tighter text-sapphire-900 mb-4;
+}
+
+.prose-sapphire h2 {
+  @apply text-2xl font-light tracking-tighter text-sapphire-900 mb-3;
+}
+
+.prose-sapphire h3 {
+  @apply text-xl font-medium text-sapphire-900 mb-2;
+}
+
+.prose-sapphire p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose-sapphire ul,
+.prose-sapphire ol {
+  @apply mb-4 pl-6;
+}
+
+.prose-sapphire ul {
+  @apply list-disc;
+}
+
+.prose-sapphire ol {
+  @apply list-decimal;
+}
+
+.prose-sapphire li {
+  @apply mb-2;
+}
+
+.prose-sapphire blockquote {
+  @apply border-l-4 border-teal pl-4 italic text-sapphire-600 my-4;
+}
+
+.prose-sapphire strong {
+  @apply font-semibold text-sapphire-900;
+}
+
+.prose-sapphire em {
+  @apply italic;
+}
+
+.prose-sapphire code {
+  @apply bg-vapor px-2 py-1 rounded text-sm font-mono text-teal;
+}
+
+.prose-sapphire pre {
+  @apply bg-sapphire-900 text-white p-4 rounded-xl overflow-x-auto my-4;
+}
+
+.prose-sapphire pre code {
+  @apply bg-transparent text-white p-0;
+}
+
+.prose-sapphire a {
+  @apply text-teal hover:underline;
+}

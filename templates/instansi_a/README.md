@@ -1,55 +1,44 @@
 # Template Instansi A
 
-Template untuk laporan perjalanan dinas Instansi A.
+Template laporan perjalanan dinas untuk Instansi A.
 
 ## Files
 
 - `template_v1.docx` - Template DOCX dengan placeholder docxtpl
-- `schema_v1.json` - Schema struktur laporan (section wajib, metadata, dll)
+- `schema_v1.json` - Schema struktur laporan
 
-## Placeholder docxtpl
-
-Template DOCX menggunakan Jinja2 syntax untuk placeholder:
+## Placeholder Variables (docxtpl)
 
 ### Metadata
 - `{{ meta.activity_name }}` - Nama kegiatan
 - `{{ meta.location }}` - Lokasi
 - `{{ meta.date_start }}` - Tanggal mulai
 - `{{ meta.date_end }}` - Tanggal selesai
-- `{{ meta.unit }}` - Unit/Bagian
+- `{{ meta.unit }}` - Unit/instansi
+- `{{ meta.participants }}` - Array peserta
 
 ### Sections
-- `{{ sections.pendahuluan.content }}` - Konten pendahuluan
-- `{{ sections.dasar_pelaksanaan.content }}` - Dasar pelaksanaan
-- `{{ sections.hasil.content }}` - Hasil dan pembahasan
-- `{{ sections.kesimpulan.content }}` - Kesimpulan
+- `{{ pendahuluan.content }}` - Konten pendahuluan
+- `{{ pelaksanaan.content }}` - Konten pelaksanaan
+- `{{ hasil.content }}` - Konten hasil
+- `{{ penutup.content }}` - Konten penutup
 
-### Loops
-
-#### Peserta
+### Agenda Table
 ```
-{% for peserta in sections.pelaksanaan.subsections.peserta.items %}
-- {{ peserta }}
+{% for row in pelaksanaan.subsections[0].table %}
+{{ row.data.waktu }} | {{ row.data.kegiatan }} | {{ row.data.pembicara }}
 {% endfor %}
 ```
 
-#### Agenda
+### Photos
 ```
-{% for row in sections.pelaksanaan.subsections.agenda.table %}
-| {{ row.waktu }} | {{ row.kegiatan }} | {{ row.keterangan }} |
+{% for photo in lampiran.attachments.photos %}
+{{ photo.caption }}
 {% endfor %}
 ```
 
-#### Foto Lampiran
-```
-{% for photo in sections.lampiran.attachments.photos %}
-{{ photo.image }}
-Caption: {{ photo.caption }}
-{% endfor %}
-```
+## Usage
 
-## Notes
-
-- Template DOCX harus dibuat manual menggunakan Microsoft Word atau LibreOffice
-- Gunakan docxtpl syntax untuk placeholder
-- Schema JSON mendefinisikan struktur yang wajib ada
+1. Upload template DOCX ke database via admin panel
+2. Link dengan schema JSON
+3. System akan menggunakan template ini untuk generate laporan

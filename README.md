@@ -49,6 +49,23 @@ npm run frontend
 - ✅ **Phase 3**: Core API - Reports & Files
 - ✅ **Phase 4**: Async Job Queue (RQ/Worker)
 - ✅ **Phase 5**: Document Parsing & Extraction
+- ✅ **Phase 6**: LLM Provider Abstraction
+- ✅ **Phase 7**: RAG & Embedding (pgvector)
+- ✅ **Phase 8**: Facts Builder & Draft Generator
+- ✅ **Phase 9**: Draft API & Versioning
+- ✅ **Phase 10**: Template System
+- ✅ **Phase 11**: Export (DOCX & PDF)
+- ✅ **Phase 12**: Frontend Foundation (React + Vite)
+- ✅ **Phase 13**: Frontend - Auth Pages
+- ✅ **Phase 14**: Frontend - Report List & Create
+- ✅ **Phase 15**: Frontend - Report Detail & Upload
+- ✅ **Phase 16**: Frontend - Draft Editor (Tiptap)
+- ✅ **Phase 17**: Frontend - Export
+- ✅ **Phase 18**: Integration & Testing
+- ⬜ **Phase 19**: Deployment & DevOps
+
+**Progress**: 18/19 Phases Complete (94.7%)
+- ✅ **Phase 5**: Document Parsing & Extraction
 - ✅ **Phase 12**: Frontend Foundation (React + Vite)
 - ✅ **Phase 13**: Frontend - Auth Pages
 - ✅ **Phase 14**: Frontend - Report List & Create

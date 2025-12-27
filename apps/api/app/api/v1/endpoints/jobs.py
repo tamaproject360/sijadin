@@ -109,3 +109,43 @@ async def get_job_status(
         )
     
     return job
+
+
+@router.get("/reports/{report_id}/job", response_model=JobResponse)
+async def get_report_latest_job(
+    report_id: int,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
+    """Get the latest job for a report."""
+    # Verify report exists and belongs to user
+    report_result = await db.execute(
+        select(Report).where(
+            Report.id == report_id,
+            Report.created_by == current_user.id
+        )
+    )
+    report = report_result.scalar_one_or_none()
+    
+    if not report:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Report not found"
+        )
+    
+    # Get latest job for this report
+    job_result = await db.execute(
+        select(JobRun)
+        .where(JobRun.report_id == report_id)
+        .order_by(JobRun.created_at.desc())
+        .limit(1)
+    )
+    job = job_result.scalar_one_or_none()
+    
+    if not job:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No job found for this report"
+        )
+    
+    return job

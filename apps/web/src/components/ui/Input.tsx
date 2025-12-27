@@ -1,5 +1,4 @@
 import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
-import { motion } from 'framer-motion'
 import clsx from 'clsx'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,14 +13,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <motion.label
-            className="block text-sm font-medium text-sapphire-700 mb-2"
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <label className="block text-sm font-medium text-sapphire-700 mb-2">
             {label}
-          </motion.label>
+          </label>
         )}
         
         <div className="relative">
@@ -31,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
           
-          <motion.input
+          <input
             ref={ref}
             className={clsx(
               'input-liquid',
@@ -40,8 +34,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               error && 'border-error focus:ring-error/30',
               className
             )}
-            whileFocus={{ scale: 1.01 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             {...props}
           />
           
@@ -53,14 +45,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         
         {error && (
-          <motion.p
-            className="mt-2 text-sm text-error"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <p className="mt-2 text-sm text-error">
             {error}
-          </motion.p>
+          </p>
         )}
       </div>
     )

@@ -16,7 +16,7 @@ interface LoginResponse {
 
 export function useAuth() {
   const navigate = useNavigate()
-  const { user, token, isAuthenticated, login: loginStore, logout: logoutStore, updateUser } = useAuthStore()
+  const { user, token, isAuthenticated, login: loginStore, logout: logoutStore } = useAuthStore()
 
   // Login mutation
   const loginMutation = useMutation({

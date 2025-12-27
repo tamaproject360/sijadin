@@ -2,10 +2,9 @@ import { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { CloudArrowUp, File, CheckCircle, Warning } from 'phosphor-react'
+import { CloudArrowUp, CheckCircle, Warning } from 'phosphor-react'
 import Card from '../ui/Card'
 import api from '../../lib/axios'
-import { formatFileSize } from '../../lib/utils'
 import clsx from 'clsx'
 
 interface FileUploadZoneProps {

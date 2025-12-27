@@ -101,13 +101,13 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 6.1 | Buat interface `LLMProvider` (abstract class) | ⬜ | Critical | 6 |
-| 6.2 | Implementasi provider Chutes AI | ⬜ | High | 6 |
-| 6.3 | Implementasi provider Gemini (multimodal) | ⬜ | High | 6 |
-| 6.4 | Buat method `generate_text(prompt, context)` | ⬜ | Critical | 6 |
-| 6.5 | Buat method `analyze_document(file, instructions)` | ⬜ | High | 6 |
-| 6.6 | Buat method `caption_images(images, instructions)` | ⬜ | High | 6 |
-| 6.7 | Implementasi LLM fallback untuk klasifikasi file ambigu | ⬜ | Medium | 6 |
+| 6.1 | Buat interface `LLMProvider` (abstract class) | ✅ | Critical | 6 |
+| 6.2 | Implementasi provider Chutes AI | ✅ | High | 6 |
+| 6.3 | Implementasi provider Gemini (multimodal) | ✅ | High | 6 |
+| 6.4 | Buat method `generate_text(prompt, context)` | ✅ | Critical | 6 |
+| 6.5 | Buat method `analyze_document(file, instructions)` | ✅ | High | 6 |
+| 6.6 | Buat method `caption_images(images, instructions)` | ✅ | High | 6 |
+| 6.7 | Implementasi LLM fallback untuk klasifikasi file ambigu | ✅ | Medium | 6 |
 | 6.8 | (Opsional) Implementasi redaction sebelum kirim ke LLM | ⬜ | Low | 6 |
 
 ---
@@ -116,11 +116,11 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 7.1 | Setup embedding model (via LLM provider) | ⬜ | High | 7 |
-| 7.2 | Buat text chunking utility | ⬜ | High | 7 |
-| 7.3 | Buat tabel untuk menyimpan embeddings (pgvector) | ⬜ | High | 7 |
-| 7.4 | Implementasi job step `embed_index` | ⬜ | High | 7 |
-| 7.5 | Buat retrieval function untuk RAG | ⬜ | High | 7 |
+| 7.1 | Setup embedding model (via LLM provider) | ✅ | High | 7 |
+| 7.2 | Buat text chunking utility | ✅ | High | 7 |
+| 7.3 | Buat tabel untuk menyimpan embeddings (pgvector) | ✅ | High | 7 |
+| 7.4 | Implementasi job step `embed_index` | ✅ | High | 7 |
+| 7.5 | Buat retrieval function untuk RAG | ✅ | High | 7 |
 
 ---
 
@@ -128,12 +128,12 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 8.1 | Definisikan schema `facts.json` (Pydantic) | ⬜ | Critical | 8 |
-| 8.2 | Implementasi job step `build_facts` | ⬜ | Critical | 8 |
-| 8.3 | Definisikan schema draft canonical JSON (Pydantic) | ⬜ | Critical | 8 |
-| 8.4 | Implementasi job step `generate_draft` | ⬜ | Critical | 8 |
-| 8.5 | Implementasi job step `persist_version` | ⬜ | Critical | 8 |
-| 8.6 | Buat guardrails: validasi JSON Schema output | ⬜ | High | 8 |
+| 8.1 | Definisikan schema `facts.json` (Pydantic) | ✅ | Critical | 8 |
+| 8.2 | Implementasi job step `build_facts` | ✅ | Critical | 8 |
+| 8.3 | Definisikan schema draft canonical JSON (Pydantic) | ✅ | Critical | 8 |
+| 8.4 | Implementasi job step `generate_draft` | ✅ | Critical | 8 |
+| 8.5 | Implementasi job step `persist_version` | ✅ | Critical | 8 |
+| 8.6 | Buat guardrails: validasi JSON Schema output | ✅ | High | 8 |
 | 8.7 | Buat guardrails: limit panjang per section | ⬜ | Medium | 8 |
 
 ---
@@ -142,11 +142,11 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 9.1 | Buat endpoint `GET /reports/{id}/draft` | ⬜ | Critical | 9 |
-| 9.2 | Buat endpoint `PATCH /reports/{id}/draft` (update sections) | ⬜ | Critical | 9 |
-| 9.3 | Buat endpoint `GET /reports/{id}/draft/versions` | ⬜ | High | 9 |
-| 9.4 | Buat endpoint `POST /reports/{id}/draft/restore` | ⬜ | Medium | 9 |
-| 9.5 | Implementasi auto-versioning saat save draft | ⬜ | High | 9 |
+| 9.1 | Buat endpoint `GET /reports/{id}/draft` | ✅ | Critical | 9 |
+| 9.2 | Buat endpoint `PATCH /reports/{id}/draft` (update sections) | ✅ | Critical | 9 |
+| 9.3 | Buat endpoint `GET /reports/{id}/draft/versions` | ✅ | High | 9 |
+| 9.4 | Buat endpoint `POST /reports/{id}/draft/restore` | ✅ | Medium | 9 |
+| 9.5 | Implementasi auto-versioning saat save draft | ✅ | High | 9 |
 
 ---
 
@@ -154,11 +154,11 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 10.1 | Buat folder `templates/instansi_a/` | ⬜ | Critical | 10 |
+| 10.1 | Buat folder `templates/instansi_a/` | ✅ | Critical | 10 |
 | 10.2 | Buat sample `template_v1.docx` dengan placeholder docxtpl | ⬜ | Critical | 10 |
-| 10.3 | Buat `schema_v1.json` (struktur section wajib) | ⬜ | Critical | 10 |
-| 10.4 | Buat API untuk list templates | ⬜ | High | 10 |
-| 10.5 | Buat API untuk get template schema | ⬜ | High | 10 |
+| 10.3 | Buat `schema_v1.json` (struktur section wajib) | ✅ | Critical | 10 |
+| 10.4 | Buat API untuk list templates | ✅ | High | 10 |
+| 10.5 | Buat API untuk get template schema | ✅ | High | 10 |
 
 ---
 
@@ -166,14 +166,14 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 11.1 | Setup docxtpl untuk render DOCX | ⬜ | Critical | 11 |
-| 11.2 | Implementasi render draft JSON ke DOCX | ⬜ | Critical | 11 |
-| 11.3 | Setup Playwright/Chromium untuk HTML→PDF | ⬜ | Critical | 11 |
-| 11.4 | Buat HTML template untuk PDF rendering | ⬜ | High | 11 |
-| 11.5 | Implementasi render draft JSON ke PDF | ⬜ | Critical | 11 |
-| 11.6 | Buat endpoint `POST /reports/{id}/export?format=docx\|pdf` | ⬜ | Critical | 11 |
-| 11.7 | Buat endpoint `GET /exports/{export_id}/download` | ⬜ | Critical | 11 |
-| 11.8 | Simpan hasil export ke MinIO bucket `exports` | ⬜ | High | 11 |
+| 11.1 | Setup docxtpl untuk render DOCX | ✅ | Critical | 11 |
+| 11.2 | Implementasi render draft JSON ke DOCX | ✅ | Critical | 11 |
+| 11.3 | Setup Playwright/Chromium untuk HTML→PDF | ✅ | Critical | 11 |
+| 11.4 | Buat HTML template untuk PDF rendering | ✅ | High | 11 |
+| 11.5 | Implementasi render draft JSON ke PDF | ✅ | Critical | 11 |
+| 11.6 | Buat endpoint `POST /reports/{id}/export?format=docx\|pdf` | ✅ | Critical | 11 |
+| 11.7 | Buat endpoint `GET /exports/{export_id}/download` | ✅ | Critical | 11 |
+| 11.8 | Simpan hasil export ke MinIO bucket `exports` | ✅ | High | 11 |
 
 ---
 
@@ -234,14 +234,14 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 16.1 | Setup Tiptap editor | ⬜ | Critical | 16 |
-| 16.2 | Buat halaman Draft Editor | ⬜ | Critical | 16 |
-| 16.3 | Buat side navigation per section (dari schema) | ⬜ | Critical | 16 |
-| 16.4 | Buat editor per section dengan Tiptap | ⬜ | Critical | 16 |
-| 16.5 | Integrasi load draft dari API | ⬜ | Critical | 16 |
-| 16.6 | Implementasi save draft ke API | ⬜ | Critical | 16 |
-| 16.7 | (Opsional) Buat panel citations/sumber | ⬜ | Low | 16 |
-| 16.8 | (Opsional) Buat version history viewer | ⬜ | Low | 16 |
+| 16.1 | Setup Tiptap editor | ✅ | Critical | 16 |
+| 16.2 | Buat halaman Draft Editor | ✅ | Critical | 16 |
+| 16.3 | Buat side navigation per section (dari schema) | ✅ | Critical | 16 |
+| 16.4 | Buat editor per section dengan Tiptap | ✅ | Critical | 16 |
+| 16.5 | Integrasi load draft dari API | ✅ | Critical | 16 |
+| 16.6 | Implementasi save draft ke API | ✅ | Critical | 16 |
+| 16.7 | (Opsional) Buat panel citations/sumber | ✅ | Low | 16 |
+| 16.8 | (Opsional) Buat version history viewer | ✅ | Low | 16 |
 
 ---
 
@@ -249,11 +249,11 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 17.1 | Buat komponen Export panel/modal | ⬜ | Critical | 17 |
-| 17.2 | Buat tombol download DOCX | ⬜ | Critical | 17 |
-| 17.3 | Buat tombol download PDF | ⬜ | Critical | 17 |
-| 17.4 | Integrasi export dengan API | ⬜ | Critical | 17 |
-| 17.5 | Handle export job status (jika async) | ⬜ | High | 17 |
+| 17.1 | Buat komponen Export panel/modal | ✅ | Critical | 17 |
+| 17.2 | Buat tombol download DOCX | ✅ | Critical | 17 |
+| 17.3 | Buat tombol download PDF | ✅ | Critical | 17 |
+| 17.4 | Integrasi export dengan API | ✅ | Critical | 17 |
+| 17.5 | Handle export job status (jika async) | ✅ | High | 17 |
 
 ---
 
@@ -261,10 +261,10 @@
 
 | No | Tugas | Status | Prioritas | Phase |
 |----|-------|--------|-----------|-------|
-| 18.1 | Buat unit tests untuk core API endpoints | ⬜ | High | 18 |
+| 18.1 | Buat unit tests untuk core API endpoints | ✅ | High | 18 |
 | 18.2 | Buat unit tests untuk job pipeline | ⬜ | High | 18 |
-| 18.3 | Buat integration tests end-to-end | ⬜ | Medium | 18 |
-| 18.4 | Test upload → process → draft → export flow | ⬜ | Critical | 18 |
+| 18.3 | Buat integration tests end-to-end | ✅ | Medium | 18 |
+| 18.4 | Test upload → process → draft → export flow | ✅ | Critical | 18 |
 | 18.5 | Performance testing untuk file besar | ⬜ | Medium | 18 |
 
 ---

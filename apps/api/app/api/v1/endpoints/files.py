@@ -31,14 +31,16 @@ def validate_file(file: UploadFile) -> None:
         )
 
 
-@router.post("/reports/{report_id}/files", response_model=ReportFileResponse, status_code=status.HTTP_201_CREATED)
-async def upload_file(
+@router.post("/reports/{report_id}/files", response_model=List[ReportFileResponse], status_code=status.HTTP_201_CREATED)
+async def upload_files(
     report_id: int,
-    file: UploadFile = File(...),
+    files: List[UploadFile] = File(...),
     db: AsyncSession = Depends(get_db),
     current_user: User = Depends(get_current_active_user)
 ):
-    """Upload a file to a report."""
+    """Upload one or more files to a report."""
+    print(f"Upload request: report_id={report_id}, files={len(files)}, user={current_user.id}")
+    
     # Verify report exists and belongs to user
     result = await db.execute(
         select(Report).where(
@@ -49,58 +51,82 @@ async def upload_file(
     report = result.scalar_one_or_none()
     
     if not report:
+        print(f"Report {report_id} not found for user {current_user.id}")
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Report not found"
         )
     
-    # Validate file
-    validate_file(file)
+    print(f"Report found: {report.id} - {report.title}")
+    uploaded_files = []
     
-    # Read file content
-    content = await file.read()
-    file_size = len(content)
-    
-    if file_size > MAX_SIZE:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"File size exceeds maximum allowed size of {settings.MAX_UPLOAD_SIZE_MB}MB"
+    for file in files:
+        print(f"Processing file: {file.filename}, type={file.content_type}")
+        
+        # Validate file
+        validate_file(file)
+        
+        # Read file content
+        content = await file.read()
+        file_size = len(content)
+        print(f"File size: {file_size} bytes")
+        
+        if file_size > MAX_SIZE:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"File {file.filename} size exceeds maximum allowed size of {settings.MAX_UPLOAD_SIZE_MB}MB"
+            )
+        
+        # Generate storage key
+        file_ext = file.filename.split(".")[-1] if "." in file.filename else ""
+        storage_key = f"reports/{report_id}/{uuid.uuid4()}.{file_ext}"
+        print(f"Storage key: {storage_key}")
+        
+        # Upload to MinIO
+        try:
+            success = minio_client.upload_file(
+                bucket=settings.MINIO_BUCKET_UPLOADS,
+                object_name=storage_key,
+                file_data=content,
+                content_type=file.content_type
+            )
+            if not success:
+                raise HTTPException(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    detail=f"Failed to upload file {file.filename} to storage"
+                )
+        except HTTPException:
+            raise
+        except Exception as e:
+            print(f"Upload exception: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail=f"Failed to upload file {file.filename}: {str(e)}"
+            )
+        
+        # Save metadata to database
+        report_file = ReportFile(
+            report_id=report_id,
+            filename=file.filename,
+            mime=file.content_type,
+            size=file_size,
+            storage_key=storage_key,
+            kind=None  # Will be classified later
         )
+        
+        db.add(report_file)
+        uploaded_files.append(report_file)
+        print(f"File metadata saved: {file.filename}")
     
-    # Generate storage key
-    file_ext = file.filename.split(".")[-1] if "." in file.filename else ""
-    storage_key = f"reports/{report_id}/{uuid.uuid4()}.{file_ext}"
-    
-    # Upload to MinIO
-    try:
-        minio_client.put_object(
-            bucket_name=settings.MINIO_BUCKET_UPLOADS,
-            object_name=storage_key,
-            data=BytesIO(content),
-            length=file_size,
-            content_type=file.content_type
-        )
-    except Exception as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to upload file: {str(e)}"
-        )
-    
-    # Save metadata to database
-    report_file = ReportFile(
-        report_id=report_id,
-        filename=file.filename,
-        mime=file.content_type,
-        size=file_size,
-        storage_key=storage_key,
-        kind=None  # Will be classified later
-    )
-    
-    db.add(report_file)
     await db.commit()
-    await db.refresh(report_file)
+    print(f"Committed {len(uploaded_files)} files to database")
     
-    return report_file
+    # Refresh all uploaded files
+    for file in uploaded_files:
+        await db.refresh(file)
+    
+    print(f"Upload complete: {len(uploaded_files)} files")
+    return uploaded_files
 
 
 @router.get("/reports/{report_id}/files", response_model=FileListResponse)
@@ -173,18 +199,26 @@ async def download_file(
     
     # Download from MinIO
     try:
-        response = minio_client.get_object(
-            bucket_name=settings.MINIO_BUCKET_UPLOADS,
+        file_data = minio_client.download_file(
+            bucket=settings.MINIO_BUCKET_UPLOADS,
             object_name=file_record.storage_key
         )
         
+        if file_data is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="File not found in storage"
+            )
+        
         return StreamingResponse(
-            response,
+            BytesIO(file_data),
             media_type=file_record.mime,
             headers={
                 "Content-Disposition": f'attachment; filename="{file_record.filename}"'
             }
         )
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

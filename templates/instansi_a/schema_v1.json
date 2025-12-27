@@ -5,74 +5,51 @@
   "sections": [
     {
       "key": "pendahuluan",
-      "title": "Pendahuluan",
+      "title": "I. PENDAHULUAN",
       "required": true,
-      "type": "text",
-      "description": "Latar belakang dan tujuan perjalanan dinas"
-    },
-    {
-      "key": "dasar_pelaksanaan",
-      "title": "Dasar Pelaksanaan",
-      "required": true,
-      "type": "text",
-      "description": "Dasar hukum dan dokumen pendukung"
+      "description": "Latar belakang dan tujuan kegiatan"
     },
     {
       "key": "pelaksanaan",
-      "title": "Pelaksanaan Kegiatan",
+      "title": "II. PELAKSANAAN KEGIATAN",
       "required": true,
-      "type": "composite",
+      "description": "Deskripsi pelaksanaan kegiatan",
       "subsections": [
         {
           "key": "waktu_tempat",
           "title": "Waktu dan Tempat",
-          "type": "text"
-        },
-        {
-          "key": "peserta",
-          "title": "Peserta",
-          "type": "list"
+          "required": true
         },
         {
           "key": "agenda",
           "title": "Agenda Kegiatan",
+          "required": true,
           "type": "table",
-          "columns": ["waktu", "kegiatan", "keterangan"]
+          "columns": ["waktu", "kegiatan", "pembicara"]
         }
       ]
     },
     {
       "key": "hasil",
-      "title": "Hasil dan Pembahasan",
+      "title": "III. HASIL DAN PEMBAHASAN",
       "required": true,
-      "type": "text",
       "description": "Hasil yang dicapai dari kegiatan"
     },
     {
-      "key": "kesimpulan",
-      "title": "Kesimpulan dan Rekomendasi",
+      "key": "penutup",
+      "title": "IV. PENUTUP",
       "required": true,
-      "type": "text",
-      "description": "Kesimpulan dan rekomendasi tindak lanjut"
+      "description": "Kesimpulan dan saran"
     },
     {
       "key": "lampiran",
-      "title": "Lampiran",
+      "title": "LAMPIRAN",
       "required": false,
-      "type": "attachments",
-      "attachment_types": {
-        "photos": {
-          "title": "Dokumentasi Foto",
-          "max_count": 20
-        },
-        "tickets": {
-          "title": "Tiket Perjalanan",
-          "max_count": 10
-        },
-        "documents": {
-          "title": "Dokumen Pendukung",
-          "max_count": 10
-        }
+      "description": "Dokumen pendukung dan foto",
+      "attachments": {
+        "photos": true,
+        "tickets": true,
+        "documents": true
       }
     }
   ],
@@ -80,13 +57,11 @@
     {
       "key": "activity_name",
       "label": "Nama Kegiatan",
-      "type": "string",
       "required": true
     },
     {
       "key": "location",
       "label": "Lokasi",
-      "type": "string",
       "required": true
     },
     {
@@ -103,15 +78,14 @@
     },
     {
       "key": "unit",
-      "label": "Unit/Bagian",
-      "type": "string",
+      "label": "Unit/Instansi",
       "required": true
     },
     {
       "key": "participants",
       "label": "Peserta",
       "type": "array",
-      "required": true
+      "required": false
     }
   ]
 }

@@ -12,7 +12,11 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Reports from './pages/Reports'
 import ReportDetail from './pages/ReportDetail'
+import DraftEditor from './pages/DraftEditor'
+import VersionHistory from './pages/VersionHistory'
+import ExportPage from './pages/ExportPage'
 import Analytics from './pages/Analytics'
+import Settings from './pages/Settings'
 
 function App() {
   // Initialize Lenis smooth scroll
@@ -50,7 +54,11 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="reports" element={<Reports />} />
           <Route path="reports/:id" element={<ReportDetail />} />
+          <Route path="reports/:id/draft" element={<DraftEditor />} />
+          <Route path="reports/:id/versions" element={<VersionHistory />} />
+          <Route path="reports/:id/export" element={<ExportPage />} />
           <Route path="analytics" element={<Analytics />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </AnimatePresence>
